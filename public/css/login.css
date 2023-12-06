@@ -1,0 +1,35 @@
+.bg-login {
+    background-image: url("/img/bg-login.png");
+    height: 91vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rounded-form {
+    border-radius: 10px;
+    border: 1px solid var(--csk-776-a-3-c-800, #443D22);
+}
+
+
+.btn-custom {
+    background-color: #887944; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    text-align: center; /* Center text */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+}
+
+    /* Hover effect (optional) */
+.btn-custom:hover {
+    background-color: #45a049;
+}
+
+#footer {
+    background: #BBAC77;
+}
