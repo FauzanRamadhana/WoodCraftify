@@ -1,13 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.adminLayout')
 @section('content')
 <div id="hero">
     <div class="container">
         <div class="row d-flex align-content-center align-items-center">
             <div class="col-md-12 hero-content">
-                <h1 class="fw-bold" style="font-size: 50px">Mulai pengalaman kustomisasimu!</h1>
-                <a href="referensi"><button class=" btn btn-light btn-lg mt-5 mx-4 px-5"
-                        style="border-radius: 15px">MULAI</button></a>
-                <button class="btn btn-light btn-lg mt-5 mx-4" style="border-radius: 15px">TENTANG KAMI</button>
+                <h1 class="fw-bold" style="font-size: 50px">Laman Admin</h1>
+                <a href="daftarUser"><button class=" btn btn-light btn-lg mt-5 mx-4 px-5"
+                        style="border-radius: 15px">USERS</button></a>
+                <a href="daftarKustomisasi"><button class=" btn btn-light btn-lg mt-5 mx-4 px-5"
+                        style="border-radius: 15px">KUSTOMISASI</button></a>
             </div>
         </div>
     </div>

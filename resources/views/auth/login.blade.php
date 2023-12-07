@@ -21,7 +21,6 @@
                             <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                         </div>
-                        <a href="#" class="ml-auto fw-bold">Forgot password?</a>
                     </div>
                     <button type="submit" class="btn btn-custom rounded-form mt-4 fw-bold"
                         style="width: 100%; height: 60px">LOGIN</button>
@@ -41,4 +40,18 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var rememberCheckbox = document.getElementById('exampleCheck1');
+
+    // Check if the checkbox is checked
+    if (rememberCheckbox && rememberCheckbox.checked) {
+        // Set a cookie with a name, value, and expiration time (e.g., 30 days)
+        document.cookie = "remember_me=true; expires=" + new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+            .toUTCString() + "; path=/";
+    }
+});
+</script>
+
 @endsection

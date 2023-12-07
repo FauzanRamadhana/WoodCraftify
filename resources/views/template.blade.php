@@ -34,8 +34,10 @@
                 </div>
             </div>
             <div class="col-md-12 text-center text-light" style="">
-                <button class="px-5 btn btn-light btn-lg" style="border-radius: 15px">REFERENSI PRIBADI</button>
+                <button class="px-5 btn btn-light btn-lg" style="border-radius: 15px"
+                    onclick="window.location='{{ route('kustomisasi') }}'">REFERENSI PRIBADI</button>
             </div>
+
         </div>
     </div>
 </div>

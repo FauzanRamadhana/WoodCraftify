@@ -23,33 +23,41 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'user'])->name('dashboard');
 
+Route::get('/dashboardAdmin', function () {
+    return view('dashboardAdmin');
+})->middleware(['auth', 'admin'])->name('dashboardAdmin');
 // Route::get('/admin', function () {
 //     return view('admin');
 // })->middleware(['auth', 'admin']);
 
 Route::get('/user/{user}', [ProfileController::class, 'show'])->middleware(['auth', 'verified'])->name('userView');
 Route::put('/userUpdate', [ProfileController::class, 'update1'])->name('userUpdate');
-Route::get('/admin', [ProfileController::class, 'index'])->middleware(['auth', 'admin'])->name('user');
+// daftar user
+Route::get('/daftarUser', [ProfileController::class, 'index'])->middleware(['auth', 'admin'])->name('daftarUser');
+// daftar kustomisasi
+Route::get('/daftarKustomisasi', [CustomizationController::class, 'index'])->middleware(['auth', 'admin'])->name('daftarKustomisasi');
 Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('delete');
-Route::get('/template', function () {
-    return view('template');
-});
 
-Route::get('/template', function () {
+
+Route::get('/referensi', function () {
     return view('template');
-});
+})->middleware(['auth', 'user'])->name('referensi');
+
 
 Route::get('/hubungi', function () {
     return view('hubungi');
 });
 
-Route::get('kustomisasi', [CustomizationController::class, 'create'])
+Route::get('kustomisasi', [CustomizationController::class, 'create'])->middleware(['auth', 'user'])
     ->name('kustomisasi');
-Route::post('kustomisasi', [CustomizationController::class, 'store']);
+Route::post('kustomisasi', [CustomizationController::class, 'store'])->middleware(['auth', 'user']);
 
-Route::middleware('auth')->group(function () {
+// get all customization
+Route::get('/getAllCustomisations', [CustomizationController::class, 'getAllCustomisations'])->middleware(['auth', 'admin'])->name('getAllCustomisations');
+
+Route::middleware('auth', 'user')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -9,21 +9,14 @@
 
         <ul class="navbar-nav mx-auto" style="font-size: 20px">
             <li class="nav-item">
-                <a class="nav-link mx-3 text-dark" aria-current="page" href="beranda.php">REFERENSI</a>
+                <a class="nav-link mx-3 text-dark @if(request()->routeIs('referensi')) fw-bold @endif"
+                    aria-current="page" href="{{ route('referensi') }}">REFERENSI</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-3 text-dark" href="{{ route('kustomisasi') }}">KUSTOMISASI</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link mx-3 text-dark" href="edukasi.php">NOTA</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link ml-2 text-dark" href="edukasi.php">RIWAYAT</a>
+                <a class="nav-link mx-3 text-dark @if(request()->routeIs('kustomisasi')) fw-bold @endif"
+                    href="{{ route('kustomisasi') }}">KUSTOMISASI</a>
             </li>
         </ul>
-        <div class="mx-4">
-            <img src="/img/cari.png" alt="" width="40">
-        </div>
         <div class="ml-4">
             <div class="dropdown">
                 <img src="/img/contact.png" alt="" width="40" data-bs-toggle="dropdown" aria-expanded="false">

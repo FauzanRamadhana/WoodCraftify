@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.adminLayout')
 @section('content')
 <div id="hero">
     <div class="container pt-4">
@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 {{-- data table --}}
                 <div class="card">
-                    <div class="card-header">Manage Users</div>
+                    <div class="card-header">Daftar User</div>
                     <div class="card-body">
                         {{ $dataTable->table() }}
                     </div>

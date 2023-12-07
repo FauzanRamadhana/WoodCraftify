@@ -6,10 +6,15 @@ use App\Models\Kustomisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
+use DB;
+use Yajra\DataTables\DataTables;
 
 class CustomizationController extends Controller
 {
-
+    public function index()
+    {
+        return view('daftarKustomisasi');
+    }
     public function create(): View
     {
         return view('kustomisasi');
@@ -35,5 +40,26 @@ class CustomizationController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Upload berhasil!');
     }
+    
+
+
+public function getAllCustomisations()
+{
+    $customisations = DB::table('kustomisasi as k')
+        ->select(
+            'k.id as id',
+            'k.image as image',
+            'k.name as name',
+            'k.description as description',
+            'u.name as namaPengaju'
+        )
+        ->join('users as u', 'u.id', '=', 'k.id_user')
+        ->orderBy('k.id', 'asc')
+        ->get();
+
+    return Datatables::of($customisations)
+        ->make(true);
+}
+
 
 }
