@@ -63,6 +63,10 @@
                         <a class="nav-link mx-3 text-dark @if(request()->routeIs('daftarKustomisasi')) fw-bold @endif"
                             href="{{ route('daftarKustomisasi') }}">KUSTOMISASI</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3 text-dark @if(request()->routeIs('daftarKustomisasi')) fw-bold @endif"
+                            href="{{ route('daftarReferensi') }}">REFERENSI</a>
+                    </li>
 
                 </ul>
                 <div class="ml-4">

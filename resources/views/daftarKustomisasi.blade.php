@@ -15,7 +15,12 @@ $(document).ready(function() {
             },
             {
                 data: 'image',
-                name: 'image'
+                name: 'image',
+                render: function(data, type, row, meta) {
+                    var imageUrl = '{{ Storage::url("") }}' + data;
+                    return '<img src="' + imageUrl +
+                        '" alt="Product Image" class="img-thumbnail" style="max-width:150px; max-height:150px">';
+                }
             },
             {
                 data: 'name',
@@ -29,6 +34,38 @@ $(document).ready(function() {
                 data: 'namaPengaju',
                 name: 'namaPengaju'
             },
+            {
+                data: 'status',
+                name: 'status',
+                render: function(data, type, row, meta) {
+                    // Mengubah nilai status menjadi label yang diinginkan
+                    var statusLabel = '';
+                    switch (data) {
+                        case 1:
+                            statusLabel = 'Persetujuan';
+                            break;
+                        case 2:
+                            statusLabel = 'Setuju';
+                            break;
+                        case 3:
+                            statusLabel = 'Tolak';
+                            break;
+                        default:
+                            statusLabel = 'Undefined';
+                            break;
+                    }
+                    return statusLabel;
+                }
+            },
+            {
+                render: function(data, type, row, meta) {
+                    return '<div class="btn-group">' +
+                        '<a href="{{ url("kustomisasiStatus") }}/' + row.id +
+                        '" class="btn btn-info btn-sm">Edit</a>' +
+                        '</div>';
+                }
+            }
+
         ]
     });
 });
@@ -45,10 +82,12 @@ $(document).ready(function() {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>File Gambar</th>
+                                    <th>Gambar</th>
                                     <th>Nama</th>
                                     <th>Deksripsi</th>
                                     <th>Nama Pengaju</th>
+                                    <th>Status</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                         </table>
@@ -58,6 +97,7 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
+
 <div id="footer">
     <div class="container">
         <div class="row d-flex align-content-center align-items-center">

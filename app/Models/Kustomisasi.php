@@ -18,5 +18,6 @@ class Kustomisasi extends Model
         'name',
         'description',
         'id_user',
+        'status',
     ];
 }

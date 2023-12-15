@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ApiReferenceController;
 use App\Http\Controllers\CustomizationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReferensiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -56,6 +58,13 @@ Route::post('kustomisasi', [CustomizationController::class, 'store'])->middlewar
 
 // get all customization
 Route::get('/getAllCustomisations', [CustomizationController::class, 'getAllCustomisations'])->middleware(['auth', 'admin'])->name('getAllCustomisations');
+
+route::get('/kustomisasiStatus/{detailKustomisasiId}', [CustomizationController::class, 'detailKustomisasi'])->middleware(['auth', 'admin'])->name('detailKustomisasi');
+Route::post('/updateStatus', [CustomizationController::class, 'updateKustomisasi'])->middleware(['auth', 'admin'])->name('updateKustomisasi');
+
+Route::get('/daftarReferensi', [ReferensiController::class, 'index'])->middleware(['auth', 'admin'])->name('daftarReferensi');
+Route::post('referensi', [ReferensiController::class, 'store'])->middleware(['auth', 'admin']);
+
 
 Route::middleware('auth', 'user')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
