@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiReferenceController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomizationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReferensiController;

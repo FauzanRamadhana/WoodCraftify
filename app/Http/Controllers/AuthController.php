@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\Sanctum;
 
 class AuthController extends Controller
 {
@@ -52,15 +53,10 @@ class AuthController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
 
-            // Create token
             $token = $user->createToken('api-token')->plainTextToken;
-            $csrf = csrf_token();
-
-            // Return response with token
             return response()->json(['token' => $token, 'user' => $user], 200);
         }
 
-        // Invalid credentials
         return response()->json(['error' => 'Invalid credentials'], 401);
     }
 }
