@@ -1,14 +1,111 @@
-.nav-color {
-    background: #BBAC77
+.main-content {
+    padding-top: 110px;
+    padding-left: 290px;
 }
 
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 270px;
+    padding-top: 100px;
+
+    background-color: #ffff;
+    border: 2px solid var(--csk-776-a-3-c-200, #DDD6BB);
+}
+
+.sidetext-color {
+    color: var(--csk-776-a-3-c-800, #443D22);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+}
+
+.sidebar-icon {
+    width: 30px;
+}
+
+.sidebar-bg {
+    width: 220px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 0px 100px 100px 0px;
+    background: var(--csk-776-a-3-c-100, #EEEADD);
+}
+
+.side-bottom-text {
+    padding-top: 340px;
+    text-size-adjust: 10px;
+    font-size:smaller;
+    padding-left: 16px;
+    color: var(--csk-776-a-3-c-400, #BBAC77);
+}
+
+.reference-card {
+    margin-top: 50px;
+    width: 20rem;
+    margin-left: 50px;
+    border-radius: 9.6px;
+    border: 2px solid var(--csk-776-a-3-c-200, #DDD6BB);
+}
+
+.personal-card {
+    margin-top: 50px;
+    width: 20rem;
+    height: 400px;
+    margin-left: 30px;
+    border-radius: 9.6px;
+    border: 2px solid var(--csk-776-a-3-c-200, #DDD6BB);
+}
+
+.btn-reference {
+    border-radius: 100px;
+    background: var(--csk-776-a-3-c-800, #443D22);
+    width: 320px;
+    margin-left: 40px;
+}
+
+.btn-reference-pick {
+    border-radius: 95.04px;
+    background: var(--csk-776-a-3-c-700, #665B33);
+    width: 200px;
+    margin-top: 10px;
+}
+
+.nav-color {
+    background: #FFFF;
+    border: 2px solid var(--csk-776-a-3-c-200, #DDD6BB);
+}
+
+.person-custom {
+    color: var(--csk-776-a-3-c-800, #443D22);
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    border-radius: 25px;
+    background: var(--csk-776-a-3-c-200, #DDD6BB);
+    width: 500px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 55px;
+}
 /* bg contact */
 #hero {
-    background-image: url("/img/bg.png");
-    height: 80vh;
+    background-image: url("/img/bg-start.png");
+    height: 89vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+/* Adjust the top padding as needed */
+}
+
+.font-welcome {
+    font-size:90px;
+    color: var(--csk-776-a-3-c-50, #F6F5EE);
+    font-weight: 500;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #footer {
@@ -54,6 +151,42 @@
 
     /* Hover effect (optional) */
 .btn-custom:hover {
+    background-color: #45a049;
+}
+
+.btn-custom-login {
+    background-color: #F6F5EE; /* Green background color */
+    color: #443D22; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    text-align: center; /* Center text */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 0px;
+}
+
+    /* Hover effect (optional) */
+.btn-custom-login:hover {
+    background-color: #45a049;
+}
+
+.btn-custom-start {
+    background-color: #776A3C; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    text-align: center; /* Center text */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 0px;
+}
+
+    /* Hover effect (optional) */
+.btn-custom-start:hover {
     background-color: #45a049;
 }
 

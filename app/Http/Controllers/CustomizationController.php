@@ -15,13 +15,25 @@ class CustomizationController extends Controller
     {
         return view('daftarKustomisasi');
     }
+    public function index1()
+    {
+
+        $userId = auth()->id(); 
+        $customizations = Kustomisasi::where('id_user', $userId)->get();
+
+        return view('daftarKustomisasiUser', ['customizations' => $customizations]);
+    }
     public function create(): View
     {
         return view('kustomisasi');
     }
 
+    public function advance()
+    {
+        return view('personalAdvance');
+    }
     public function store(Request $request)
-    {      
+    {
         $request->validate([
             'name' => ['required', 'string'],
             'description' => ['required', 'string'],
@@ -35,7 +47,7 @@ class CustomizationController extends Controller
             'description' => $request->description,
             'image' => $imagePath,
             'id_user' => auth()->id(),
-            'status' => 'Persetujuan',
+            'status' => 1,
             'created_at' => now()->toDateString()
         ]);
 
@@ -114,5 +126,10 @@ class CustomizationController extends Controller
             ->where('k.id', '=', $detailKustomisasiId)->first();
 
         return view('detailKustomisasi', compact('detailKustomisasi'));
+    }
+
+    public function personal()
+    {
+
     }
 }

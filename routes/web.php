@@ -21,12 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'user'])->name('dashboard');
+Route::get('/dashboard', [ReferensiController::class, 'index1'])->middleware(['auth', 'user'])->name('dashboard');
+
 
 Route::get('/dashboardAdmin', function () {
     return view('dashboardAdmin');
@@ -62,9 +61,16 @@ Route::get('/getAllCustomisations', [CustomizationController::class, 'getAllCust
 
 route::get('/kustomisasiStatus/{detailKustomisasiId}', [CustomizationController::class, 'detailKustomisasi'])->middleware(['auth', 'admin'])->name('detailKustomisasi');
 Route::post('/updateStatus', [CustomizationController::class, 'updateKustomisasi'])->middleware(['auth', 'admin'])->name('updateKustomisasi');
-
+Route::get('advance', [CustomizationController::class, 'advance'])->middleware(['auth', 'user'])->name('advance');
 Route::get('/daftarReferensi', [ReferensiController::class, 'index'])->middleware(['auth', 'admin'])->name('daftarReferensi');
+Route::get('/personalAdvance/{id}', [ReferensiController::class, 'personalAdvance'])->name('personalAdvance');
+Route::post('/personal', [CustomizationController::class, 'personal'])->name('personal');
+Route::get('/daftarKustomisasi', [CustomizationController::class, 'index1'])->middleware(['auth', 'user'])->name('daftaKustomisasi');
+
+
 Route::post('referensi', [ReferensiController::class, 'store'])->middleware(['auth', 'admin']);
+Route::post('referensiUser', [ReferensiController::class, 'store1'])->middleware(['auth', 'user'])->name('referensiUser');
+
 
 
 Route::middleware('auth', 'user')->group(function () {

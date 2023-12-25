@@ -54,7 +54,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             $token = $user->createToken('api-token')->plainTextToken;
-            return response()->json(['token' => $token, 'user' => $user], 200);
+            return response()->json(['success' => true, 'message' => 'Sukses Login', 'token' => $token, 'user' => $user], 200);
         }
 
         return response()->json(['error' => 'Invalid credentials'], 401);

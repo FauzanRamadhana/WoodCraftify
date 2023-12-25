@@ -19,5 +19,11 @@ class Kustomisasi extends Model
         'description',
         'id_user',
         'status',
+        'quantity',
+        'color',
+        'length',
+        'width',
+        'height',
+        'notes'
     ];
 }

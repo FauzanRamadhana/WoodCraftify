@@ -29,6 +29,8 @@ class ApiReferenceController extends Controller
 
         ]);
         return response()->json([
+            'success' => true,
+            'message' => 'Berhasil menambahkan referensi',
             'data' => $reference
         ]);
     }
@@ -44,7 +46,11 @@ class ApiReferenceController extends Controller
             'image' => $referensi->image,
             'description' => $referensi->description,
         ];
-        return response()->json($referensiData);
+        return response()->json([
+            'success' => true,
+            'data' => $referensiData,
+            'message' => 'Berhasil mendapatkan data'
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -57,6 +63,8 @@ class ApiReferenceController extends Controller
         $referensi->save();
 
         return response()->json([
+            'success' => true,
+            'message' => 'Berhasil memperbarui referensi',
             'data' => $referensi
         ]);
     }
@@ -72,9 +80,12 @@ class ApiReferenceController extends Controller
         $referensi->delete();
 
         return response()->json([
-            'message' => 'Referensi deleted successfully'
-        ], 204);
+            'status' => true,
+            'message' => 'Referensi berhasil dihapus',
+            'data' => null,
+        ], 200);
     }
+
 
 
 }
