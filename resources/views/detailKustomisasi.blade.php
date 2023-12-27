@@ -39,6 +39,41 @@
             </div>
 
             <div class="mt-4">
+                <x-input-label for="quantity" :value="__('Jumlah')" />
+                <x-text-input id="quantity" class="block mt-1 w-full" type="text" name="quantity"
+                    :value="$detailKustomisasi -> quantity" readonly />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="color" :value="__('Warna')" />
+                <x-text-input id="color" class="block mt-1 w-full" type="text" name="color"
+                    :value="$detailKustomisasi -> color" readonly />
+            </div>
+            <div class="mt-4">
+                <x-input-label for="length" :value="__('Panjang')" />
+                <x-text-input id="length" class="block mt-1 w-full" type="text" name="length"
+                    :value="$detailKustomisasi -> length" readonly />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="width" :value="__('Lebar')" />
+                <x-text-input id="width" class="block mt-1 w-full" type="text" name="width"
+                    :value="$detailKustomisasi -> width" readonly />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="height" :value="__('Tinggi')" />
+                <x-text-input id="height" class="block mt-1 w-full" type="text" name="height"
+                    :value="$detailKustomisasi -> height" readonly />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="notes" :value="__('Catatan')" />
+                <x-text-input id="notes" class="block mt-1 w-full" type="text" name="notes"
+                    :value="$detailKustomisasi -> notes" readonly />
+            </div>
+
+            <div class="mt-4">
                 <x-input-label for="status" :value="__('Status')" />
                 <select name="status" id="status" class="block mt-1 w-full form-select">
                     <option value="1" @if(old('status', $detailKustomisasi->status) == 1) selected @endif>Persetujuan
@@ -46,6 +81,14 @@
                     <option value="2" @if(old('status', $detailKustomisasi->status) == 2) selected @endif>Setuju
                     </option>
                     <option value="3" @if(old('status', $detailKustomisasi->status) == 3) selected @endif>Tolak
+                    </option>
+                    <option value="4" @if(old('status', $detailKustomisasi->status) == 1) selected @endif>empat
+                    </option>
+                    <option value="5" @if(old('status', $detailKustomisasi->status) == 1) selected @endif>lima
+                    </option>
+                    <option value="6" @if(old('status', $detailKustomisasi->status) == 1) selected @endif>enam
+                    </option>
+                    <option value="7" @if(old('status', $detailKustomisasi->status) == 1) selected @endif>tujuh
                     </option>
                 </select>
             </div>

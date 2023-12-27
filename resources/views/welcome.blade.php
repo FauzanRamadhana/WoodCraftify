@@ -56,7 +56,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="ml-auto d-flex">
-                <a href="{{ route('login') }}"><button class=" btn btn-custom-login" style="width:111px; height:53px">
+                <a href="{{ route('login') }}"><button class="btn btn-custom-login"
+                        style="width:111px; margin-right: 30px">
                         Login
                     </button></a>
                 <a href="{{ route('register') }}"> <button class="btn ml-5 btn-custom-start" style="width:111px">
@@ -69,7 +70,7 @@
         <div class="container">
             <div class="row d-flex align-items-center justify-content-center" style="height: 89vh;">
                 <div class="col-md-12 mb-5 text-center">
-                    <h1 class="font-welcome">We appreciate<br>your dream</h1>
+                    <h1 class="font-welcome">We make your dream<br>come true</h1>
                     <h1 class="mt-5 mb-5" style="color: var(--csk-776-a-3-c-50, #F6F5EE); font-size: 26px;">Custom
                         Furniture, Crafted With Love</h1>
                     <a href="{{ route('register') }}"><button class="btn mr-4 btn-custom-login"

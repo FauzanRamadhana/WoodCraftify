@@ -8,21 +8,21 @@
             <!-- Your content goes here -->
             <h1 class="ml-4 mt-2 fs-3 fw-bold" style="color: var(--csk-776-a-3-c-800, #443D22);">Personal Customization
             </h1>
-            <form action="{{ route('referensiUser') }}" method="POST" enctype="multipart/form-data"
-                style="max-width: 700px; width: 100%; margin: 0 auto; border:">
+            <form action="{{ route('processUpdateKustomisasi', ['id' => $kustomisasi->id]) }}" method="POST"
+                enctype="multipart/form-data" style="max-width: 700px; width: 100%; margin: 0 auto; border:">
                 @csrf
-                <input type="hidden" name="name" value="{{ $reference->name }}">
-                <input type="hidden" name="image" value="{{ $reference->image }}">
-                <input type="hidden" name="description" value="{{ $reference->description }}">
+                <input type="hidden" name="name" value="{{ $kustomisasi->name }}">
+                <input type="hidden" name="image" value="{{ $kustomisasi->image }}">
+                <input type="hidden" name="description" value="{{ $kustomisasi->description }}">
                 <div class="row row-cols-md-3 g-4">
                     <div class="card personal-card">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $reference->name }}</h5>
+                            <h5 class="card-title">{{ $kustomisasi->name }}</h5>
                         </div>
-                        <img src="{{ asset('storage/' . $reference->image) }}" class="card-img-top"
-                            alt="{{ $reference->name }}">
+                        <img src="{{ asset('storage/' . $kustomisasi->image) }}" class="card-img-top"
+                            alt="{{ $kustomisasi->name }}">
                         <div class="card-body">
-                            <p class="card-text">{{ $reference->description }}</p>
+                            <p class="card-text">{{ $kustomisasi->description }}</p>
                         </div>
                     </div>
 

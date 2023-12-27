@@ -18,11 +18,14 @@ class CustomizationController extends Controller
     public function index1()
     {
 
-        $userId = auth()->id(); 
+        $userId = auth()->id();
         $customizations = Kustomisasi::where('id_user', $userId)->get();
 
         return view('daftarKustomisasiUser', ['customizations' => $customizations]);
     }
+
+
+
     public function create(): View
     {
         return view('kustomisasi');
@@ -121,6 +124,14 @@ class CustomizationController extends Controller
                 'k.description as description',
                 'u.name as namaPengaju',
                 'k.status as status',
+                'k.quantity as quantity',
+                'k.color as color',
+                'k.length as length',
+                'k.width as width',
+                'k.height as height',
+                'k.notes as notes',
+
+
             )
             ->join('users as u', 'u.id', '=', 'k.id_user')
             ->where('k.id', '=', $detailKustomisasiId)->first();
@@ -128,8 +139,61 @@ class CustomizationController extends Controller
         return view('detailKustomisasi', compact('detailKustomisasi'));
     }
 
-    public function personal()
+    public function show($id)
     {
+        try {
+            $kustomisasi = Kustomisasi::findOrFail($id);
+            return view('detailsList', ['kustomisasi' => $kustomisasi]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json(['error' => 'Kustomisasi tidak ditemukan'], 404);
+        }
+    }
+    public function destroy($id)
+    {
+        $customization = Kustomisasi::findOrFail($id);
+        $customization->delete();
+
+        return redirect()->route('daftarKustomisasiUser')->with('status', 'Customization deleted successfully!');
+    }
+
+    public function kustomisasiAdvance($id)
+    {
+        $kustomisasi = Kustomisasi::find($id);
+
+        if (!$kustomisasi) {
+            abort(404);
+        }
+
+        return view('updateKustomisasi', ['kustomisasi' => $kustomisasi]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi input jika diperlukan
+        $request->validate([
+            'quantity' => 'required|integer',
+            'color' => 'required|string',
+            'length' => 'required|numeric',
+            'width' => 'required|numeric',
+            'height' => 'required|numeric',
+            'notes' => 'nullable|string',
+        ]);
+
+        // Dapatkan instance model Kustomisasi berdasarkan ID
+        $kustomisasi = Kustomisasi::findOrFail($id);
+
+        // Perbarui atribut-atribut model
+        $kustomisasi->update([
+            'quantity' => $request->input('quantity'),
+            'color' => $request->input('color'),
+            'length' => $request->input('length'),
+            'width' => $request->input('width'),
+            'height' => $request->input('height'),
+            'notes' => $request->input('notes'),
+        ]);
+
+        // Redirect atau kembalikan respons sesuai kebutuhan Anda
+        return redirect()->route('daftarKustomisasiUser')->with('success', 'Kustomisasi berhasil diperbarui');
 
     }
 }

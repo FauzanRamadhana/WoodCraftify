@@ -1,15 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.adminLayout')
 @section('content')
-<div id="hero">
-    <div class="container">
-        <div class="row d-flex align-content-center align-items-center">
-            {{-- text (12) --}}
-            <div class="col-md-12 mt-4 text-center" style="color: var(--csk-776-a-3-c-800, #443D22)">
-                <h1 class="fw-bold mb-4 pb-4" style="font-size: 30px">REFERENSI</h1>
-            </div>
+<div class="container-fluid">
+    <div class="row">
+        @include('layouts.sidebarAdmin')
+        {{-- text (12) --}}
+        <main role="main" class="col-md-12 main-content mb-5">
             {{-- end of text --}}
             {{-- preview image --}}
-            <div class="d-flex col-md-4 justify-content-center mb-4">
+            <div class="d-flex col-md-4 justify-content-center mb-4 ml-4">
                 <div class="card">
                     <img id="previewImage" class="img-fluid" src="/img/imgpreview.png" alt="Image Preview"
                         style="width: 400px; height: 400px;">
@@ -18,7 +16,6 @@
             {{-- column --}}
             <div class="d-flex col-md-8 justify-content-center mb-4">
                 <form action="{{ route('referensi') }}" method="post" class="w-100 mx-4" enctype="multipart/form-data">
-
                     @csrf
                     <div class="form-group mb-3">
                         <label for="name" class="fw-bold text-dark mb-1 fs-5">NAMA FURNITURE</label>
@@ -38,14 +35,7 @@
                         req>Upload</button>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
-<div id="footer">
-    <div class="container">
-        <div class="row d-flex align-content-center align-items-center">
-            <h1 class="my-4 fw-bold" style="font-size: 22px">Copyright @ 2023. All rights reserved</h1>
-        </div>
+        </main>
     </div>
 </div>
 

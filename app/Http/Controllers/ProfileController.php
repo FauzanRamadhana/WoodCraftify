@@ -52,14 +52,21 @@ class ProfileController extends Controller
         return Redirect::route('dashboard')->with('status', 'profile-updated');
     }
 
-    
+
 
     public function destroy($id)
     {
-        $users = User::find($id);
-        $users->delete();
-        return redirect('/admin')->with('status', "Data Deleted Successfully!");
+        $user = User::findOrFail($id);
+
+        // Delete related records in the kustomisasi table
+        $user->kustomisasi()->delete();
+
+        // Delete the user
+        $user->delete();
+
+        return redirect('/daftarUser')->with('status', "Data Deleted Successfully!");
     }
+
 
 
     public function index(UsersDataTable $dataTable)

@@ -2,47 +2,20 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-8 sidebar">
-            <ul class="nav flex-column">
-                <li
-                    class="nav-item sidetext-color d-flex align-items-center {{ request()->is('dashboard') ? 'fw-bold sidebar-bg' : '' }}">
-                    <img src="img/reference.png" alt="Reference Icon" class="sidebar-icon">
-                    <a href="{{ route('dashboard') }}" class="ml-2">Reference</a>
-                </li>
-                <li
-                    class="nav-item sidetext-color d-flex align-items-center {{ request()->is('dashboard') ? 'font-weight-bold ' : '' }}">
-                    <img src="img/customization.png" alt="Customization Icon" class="sidebar-icon">
-                    <a href="{{ route('daftaKustomisasi') }}" class="ml-2">Customization</a>
-                </li>
-                <li
-                    class="nav-item sidetext-color d-flex align-items-center {{ request()->is('dashboard') ? 'font-weight-bold' : '' }}">
-                    <img src="img/transaction.png" alt="Transactions Icon" class="sidebar-icon">
-                    <a href="{{ route('dashboard') }}" class="ml-2">Transactions</a>
-                </li>
-                <li
-                    class="nav-item sidetext-color d-flex align-items-center {{ request()->is('dashboard') ? 'font-weight-bold' : '' }}">
-                    <img src="img/history.png" alt="History Icon" class="sidebar-icon">
-                    <a href="{{ route('dashboard') }}" class="ml-2">History</a>
-                </li>
-                <li class="nav-item d-flex align-items-center side-bottom-text fw-bold">
-                    <p>Woodcraftify Copyright @ 2023</p>
-                </li>
-            </ul>
-        </div>
-
+        @include('layouts.sidebar')
         <!-- Main Content -->
-        <main role="main" class="col-md-12 main-content">
-            <h1 class="ml-4 mt-2 fs-3 fw-bold" style="color: var(--csk-776-a-3-c-800, #443D22);">Customization List</h1>
-            <div class="card ml-4 mt-3 mr-5" style="border: 2px solid var(--csk-776-a-3-c-600, #887944);">
+        <main role="main" class="col-md-12 main-content" style="padding-left:310px; padding-right: 55px">
+            <h1 class="ml-4 fs-3 fw-bold mb-4" style="color: var(--csk-776-a-3-c-800, #443D22);">Customization List
+            </h1>
+            <div class="card ml-4 mt-4 mr-5"
+                style="border: 2px solid var(--csk-776-a-3-c-600, #887944); border-radius: 12px">
                 <table class="table">
                     <thead>
                         <tr>
                             <th class="text-center" scope="col">ID</th>
                             <th class="text-center" scope="col">Name</th>
-                            <th class="text-center" scope="col">Description</th>
                             <th class="text-center" scope="col">Status</th>
-                            <th class="text-center" scope="col">Actions</th>
+                            <th class="text-center" scope="col">Details</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -51,7 +24,6 @@
                         <tr>
                             <td class="text-center pt-3">{{ $customization->id }}</td>
                             <td class="text-center pt-3">{{ $customization->name }}</td>
-                            <td class="text-center pt-3">{{ $customization->description }}</td>
                             <td class="text-center pt-3">
                                 @if ($customization->status == 1)
                                 Persetujuan
@@ -63,13 +35,19 @@
                                 Status Tidak Dikenali
                                 @endif
                             </td>
-                            <td>
-                                <a href=><button class=" btn btn-success">Actions</button>
-                                </a>
-                                <a><button class="btn btn-danger">Edit</button>
-                                </a>
-                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('detailsList', ['id' => $customization->id]) }}"
+                                    class="btn btn-customization-one text-light">Actions</a>
 
+                                <!-- Form for the DELETE request -->
+                                <form action="{{ route('customizations.destroy', ['id' => $customization->id]) }}"
+                                    method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-customization-second text-light"
+                                        onclick="return confirm('Kamu yakin ingin membatalkan kustomisasi?')">Cancel</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                         <tr id="actionsContent1" class="hidden-content" style="display: none;">

@@ -70,40 +70,34 @@ $(document).ready(function() {
     });
 });
 </script>
-<div id="hero">
-    <div class="container pt-4">
-        <div class="row d-flex align-content-center align-items-center">
-            <div class="col-md-12">
-                {{-- data table --}}
-                <div class="card">
-                    <div class="card-header">Daftar Kustomisasi</div>
-                    <div class="card-body">
-                        <table class="table table-striped" id="datatable">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Gambar</th>
-                                    <th>Nama</th>
-                                    <th>Deksripsi</th>
-                                    <th>Nama Pengaju</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                        </table>
+<div class="container-fluid">
+    <div class="row">
+        @include('layouts.sidebarAdmin')
+        <main role="main" class="col-md-12 main-content mb-5">
+            <div class="container">
+                <div class="row d-flex align-content-center align-items-center">
+                    <div class="col-md-12">
+                        {{-- data table --}}
+                        <div class="card">
+                            <div class="card-header">Daftar Kustomisasi</div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Gambar</th>
+                                            <th>Nama</th>
+                                            <th>Deksripsi</th>
+                                            <th>Nama Pengaju</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div id="footer">
-    <div class="container">
-        <div class="row d-flex align-content-center align-items-center">
-            <h1 class="my-4 fw-bold" style="font-size: 22px">Copyright @ 2023. All rights
-                reserved</h1>
-        </div>
-    </div>
-</div>
-@endsection
+        </main>
+        @endsection

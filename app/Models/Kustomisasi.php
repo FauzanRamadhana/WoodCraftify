@@ -26,4 +26,9 @@ class Kustomisasi extends Model
         'height',
         'notes'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
 }

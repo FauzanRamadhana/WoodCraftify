@@ -1,6 +1,6 @@
 .main-content {
-    padding-top: 110px;
-    padding-left: 290px;
+    padding-top: 130px;
+    padding-left: 285px;
 }
 
 .sidebar {
@@ -17,15 +17,16 @@
     color: var(--csk-776-a-3-c-800, #443D22);
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 50px;
+    padding-left: 30px;
+    font-size: large;
 }
 
 .sidebar-icon {
-    width: 30px;
+    width: 40px;
 }
 
 .sidebar-bg {
-    width: 220px;
+    width: 240px;
     height: 70px;
     flex-shrink: 0;
     border-radius: 0px 100px 100px 0px;
@@ -50,11 +51,46 @@
 
 .personal-card {
     margin-top: 50px;
-    width: 20rem;
-    height: 400px;
+    width: 21rem;
+    height: 350px;
     margin-left: 30px;
     border-radius: 9.6px;
     border: 2px solid var(--csk-776-a-3-c-200, #DDD6BB);
+}
+
+.process-card {
+    border-radius: 12px;
+    border: 1px solid var(--csk-776-a-3-c-300, #CCC199);
+    background: var(--csk-776-a-3-c-200, #DDD6BB);
+}
+
+.text-process-card-title {
+    color: var(--csk-776-a-3-c-800, #443D22);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 83.333% */
+    letter-spacing: 0.1px;
+}
+
+.text-process-card {
+    color: var(--csk-776-a-3-c-600, #887944);
+text-align: justify;
+font-size: 20px;
+font-style: normal;
+font-weight: 300;
+line-height: 25px; /* 125% */
+letter-spacing: 0.1px;
+}
+
+.btn-process-one {
+    border-radius: 100px;
+background: var(--csk-776-a-3-c-800, #443D22);
+}
+
+.btn-process-second {
+    border-radius: 100px;
+background: var(--csk-776-a-3-c-400, #BBAC77);
 }
 
 .btn-reference {
@@ -69,6 +105,18 @@
     background: var(--csk-776-a-3-c-700, #665B33);
     width: 200px;
     margin-top: 10px;
+}
+
+.btn-customization-one {
+    border-radius: 100px;
+    background: var(--csk-776-a-3-c-800, #443D22);
+    width: 100px;
+}
+
+.btn-customization-second {
+    border-radius: 100px;
+    background: var(--csk-776-a-3-c-400, #BBAC77);
+    width: 100px;
 }
 
 .nav-color {
@@ -132,7 +180,7 @@
 
 .rounded-form {
     border-radius: 10px;
-    border: 1px solid var(--csk-776-a-3-c-800, #443D22);
+    border: 2px solid var(--csk-776-a-3-c-800, #443D22);
 }
 
 

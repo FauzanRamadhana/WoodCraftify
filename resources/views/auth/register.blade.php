@@ -12,29 +12,29 @@
                         <input type="text" name="name" class="form-control rounded-form" style="height: 50px" id="name"
                             placeholder="Nama Lengkap">
                     </div>
-                    <div class="mb-4 mt-4 pt-2">
+                    <div class="mt-3 pt-2">
                         <input type="email" name="email" class="form-control rounded-form" style="height: 50px"
                             id="email" placeholder="Email">
                     </div>
-                    <div class="mb-4 mt-4 pt-2">
+                    <div class="mt-3 pt-2">
                         <input type="password" name="password" class="form-control rounded-form" style="height: 50px"
                             id="password" placeholder="Password">
                     </div>
-                    <div class="mb-4 mt-4 pt-2">
+                    <div class="mt-3 pt-2">
                         <input type="password" name="password_confirmation" class="form-control rounded-form"
                             style="height: 50px" id="password_confirmation" placeholder="Konfirmasi Password">
                     </div>
-                    <div class="mb-4 mt-4 pt-2">
+                    <div class="mt-3 pt-2">
                         <input type="text" name="phone" class="form-control rounded-form" style="height: 50px"
                             id="phone" placeholder="Nomor Handphone">
                     </div>
-                    <div class="mb-4 mt-4 pt-2">
+                    <div class="mb-4 mt-3 pt-2">
                         <input type="text" name="address" class="form-control rounded-form" style="height: 50px"
                             id="address" placeholder="Alamat">
                     </div>
                     <button type="submit" class="btn btn-custom rounded-form mt-2 fw-bold"
                         style="width: 100%; height: 60px">SIGN UP</button>
-                    <p class="mt-4 pt-2">Have an account? <a href="{{ route('login') }}" class="fw-bold">Login</a></p>
+                    <p class="mt-2 pt-2">Have an account? <a href="{{ route('login') }}" class="fw-bold">Login</a></p>
                 </form>
             </div>
             <div class="col-md-6 bg-login">
