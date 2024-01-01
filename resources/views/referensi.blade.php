@@ -4,36 +4,60 @@
     <div class="row">
         @include('layouts.sidebarAdmin')
         {{-- text (12) --}}
-        <main role="main" class="col-md-12 main-content mb-5">
-            {{-- end of text --}}
-            {{-- preview image --}}
-            <div class="d-flex col-md-4 justify-content-center mb-4 ml-4">
-                <div class="card">
-                    <img id="previewImage" class="img-fluid" src="/img/imgpreview.png" alt="Image Preview"
-                        style="width: 400px; height: 400px;">
-                </div>
+        <main role="main" class="main-content">
+            <!-- Your content goes here -->
+            <div class="col-md-12">
+                <h1 class="ml-4 fs-3 fw-bold" style="color: var(--csk-776-a-3-c-800, #443D22); padding-left:20px">
+                    Add Reference/Template
+                </h1>
             </div>
-            {{-- column --}}
-            <div class="d-flex col-md-8 justify-content-center mb-4">
-                <form action="{{ route('referensi') }}" method="post" class="w-100 mx-4" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group mb-3">
-                        <label for="name" class="fw-bold text-dark mb-1 fs-5">NAMA FURNITURE</label>
-                        <input type="text" name="name" class="form-control rounded-3" id="name" placeholder="Nama"
-                            required>
+            <div class="col-md-12">
+                <div class="row row-cols-md-3">
+                    <form action="{{ route('referensi') }}" method="post" enctype="multipart/form-data"
+                        style="max-width: 700px; width: 100%; margin-left: 35px; margin-top: 35px">
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="name" class="form-label label-form">Name</label>
+                                <input type="text" name="name" class="form-control rounded-form" style="border-color:
+                                    var(--csk-776-a-3-c-200, #DDD6BB);" id="name" placeholder="Your Customization Name"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row mb-3 mt-3 pt-2">
+                            <div class="col">
+                                <label for="description" class="form-label label-form">Tell Us More About Your
+                                    Custom</label>
+                                <textarea class="form-control rounded-form"
+                                    style="height: 180px; border-color: var(--csk-776-a-3-c-200, #DDD6BB);"
+                                    name="description" id="description" placeholder="More Description"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3 mt-3 pt-2">
+                            <div class="col">
+                                <label for="image" class="form-label label-form">Input Your Image</label>
+                                <div class="card mb-3" style="width: 17rem;">
+                                    <input type="file" name="image" accept="image/*" style="cursor: pointer;"
+                                        onchange="previewImage(this);" required>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-reference-pick text-light fs-6">Make A Template</button>
+                    </form>
+                    <div class="card personal-card">
+                        <div class="card-body">
+                            <h5 class="card-title label-form" style="font-weight: 500;">Image Preview</h5>
+                        </div>
+                        <img id="previewImage" src="img/addpic.png" class="img-fluid" alt="Image preview"
+                            style="width:300px; height:150px">
+                        <div class="card-body">
+                            <p class="card-text label-form">Make sure that this picture is the furniture that will be
+                                offered to users.
+                            </p>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="description" class="fw-bold text-dark mb-1 fs-5">DESKRIPSI</label>
-                        <input type="text" name="description" class="form-control rounded-3" id="description"
-                            placeholder="Deskripsi" required>
-                    </div>
-                    <div class="card mb-3" style="width: 17rem;">
-                        <input type="file" name="image" accept="image/*" class="card-img-top" style="cursor: pointer;"
-                            onchange="previewImage(this);">
-                    </div>
-                    <button type="submit" class="btn btn-custom btn-lg fw-bold w-100" style="border-radius: 15px"
-                        req>Upload</button>
-                </form>
+                </div>
             </div>
         </main>
     </div>

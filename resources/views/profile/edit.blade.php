@@ -2,7 +2,7 @@
 @section('content')
 {{-- hero --}}
 
-<div id="hero">
+<div id="hero" class="mt-4">
     <div class="container-fluid">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-12">
@@ -10,7 +10,7 @@
                     style="max-width: 400px; width: 100%; margin: 0 auto;">
                     @method('PUT')
                     @csrf
-                    <h1 class="pb-3 pt-3 fw-bold text-center" style="font-size: 28px;">PROFIL</h1>
+                    <h1 class="pb-3 pt-3 fw-bold text-center" style="font-size: 28px; margin-top: 60px">PROFIL</h1>
 
                     <div class="form-group">
                         <input type="hidden" name="id" value="{{ $user->id }}">

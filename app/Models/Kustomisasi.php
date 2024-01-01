@@ -24,7 +24,12 @@ class Kustomisasi extends Model
         'length',
         'width',
         'height',
-        'notes'
+        'notes',
+        'harga',
+        'pembayaran',
+        'buktitf',
+        'reasoning',
+        'prototype'
     ];
 
     public function user()

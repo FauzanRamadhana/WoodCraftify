@@ -38,17 +38,32 @@ $(document).ready(function() {
                 data: 'status',
                 name: 'status',
                 render: function(data, type, row, meta) {
-                    // Mengubah nilai status menjadi label yang diinginkan
+
                     var statusLabel = '';
                     switch (data) {
+                        case 0:
+                            statusLabel = 'Ditolak';
+                            break;
                         case 1:
-                            statusLabel = 'Persetujuan';
+                            statusLabel = 'Pengajuan';
                             break;
                         case 2:
-                            statusLabel = 'Setuju';
+                            statusLabel = 'Customization Approve';
                             break;
                         case 3:
-                            statusLabel = 'Tolak';
+                            statusLabel = 'Check by admin';
+                            break;
+                        case 4:
+                            statusLabel = 'Approve';
+                            break;
+                        case 5:
+                            statusLabel = 'Bill';
+                            break;
+                        case 6:
+                            statusLabel = 'Pembayaran';
+                            break;
+                        case 7:
+                            statusLabel = 'Lunas';
                             break;
                         default:
                             statusLabel = 'Undefined';

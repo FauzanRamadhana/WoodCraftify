@@ -8,7 +8,7 @@
           </li>
           <li
               class=" nav-item sidetext-color d-flex align-items-center
-                  {{ request()->is('daftarKustomisasi') || request()->is('kustomisasi/*') ? 'fw-bold sidebar-bg' : '' }}">
+                  {{ request()->is('daftarKustomisasi') || request()->is('kustomisasi/*') || request()->is('kustomisasiStatus/*') ? 'fw-bold sidebar-bg' : '' }}">
               <img src="{{ asset('img/customization.png') }}" alt="Customization Icon" class="sidebar-icon">
               <a href="{{ route('daftarKustomisasi') }}" class="ml-4">Customization</a>
           </li>
@@ -17,7 +17,7 @@
               <img src="{{ asset('img/transaction.png') }}" alt="Transactions Icon" class="sidebar-icon">
               <a href="{{ route('daftarReferensi') }}" class="ml-4">Reference</a>
           </li>
-          <li class="nav-item d-flex align-items-center side-bottom-text fw-bold" style="margin-top: 50px">
+          <li class="nav-item d-flex align-items-center side-bottom-text fw-bold" style="margin-top: 80px">
               <p>Woodcraftify Copyright @ 2023</p>
           </li>
       </ul>

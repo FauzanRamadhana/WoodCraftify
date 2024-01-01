@@ -37,7 +37,7 @@ class ReferensiController extends Controller
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('dashboardAdmin')->with('success', 'Upload berhasil!');
+        return redirect()->route('daftarUser')->with('success', 'Upload berhasil!');
     }
     public function store1(Request $request)
     {
@@ -66,7 +66,8 @@ class ReferensiController extends Controller
             'height' => $request->height,
             'notes' => $request->notes,
             'id_user' => auth()->id(),
-            'status' => 1,
+            'status' => 3,
+            'harga' => 0,
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Upload berhasil!');

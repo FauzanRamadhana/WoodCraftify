@@ -34,7 +34,7 @@
 }
 
 .side-bottom-text {
-    padding-top: 340px;
+    padding-top: 320px;
     text-size-adjust: 10px;
     font-size:smaller;
     padding-left: 16px;
@@ -88,9 +88,17 @@ letter-spacing: 0.1px;
 background: var(--csk-776-a-3-c-800, #443D22);
 }
 
+.btn-process-one:hover {
+    background-color: #F0EAC1;
+}
+
 .btn-process-second {
     border-radius: 100px;
 background: var(--csk-776-a-3-c-400, #BBAC77);
+}
+
+.btn-process-second:hover {
+    background-color: #F0EAC1;
 }
 
 .btn-reference {
@@ -100,11 +108,19 @@ background: var(--csk-776-a-3-c-400, #BBAC77);
     margin-left: 40px;
 }
 
+.btn-reference:hover {
+    background-color: #F0EAC1;
+}
+
 .btn-reference-pick {
     border-radius: 95.04px;
     background: var(--csk-776-a-3-c-700, #665B33);
     width: 200px;
     margin-top: 10px;
+}
+
+.btn-reference-pick:hover {
+    background-color: #F0EAC1;
 }
 
 .btn-customization-one {
@@ -113,10 +129,18 @@ background: var(--csk-776-a-3-c-400, #BBAC77);
     width: 100px;
 }
 
+.btn-customization-one:hover {
+    background-color: #F0EAC1;
+}
+
 .btn-customization-second {
     border-radius: 100px;
     background: var(--csk-776-a-3-c-400, #BBAC77);
     width: 100px;
+}
+
+.btn-customization-second:hover {
+    background-color: #F0EAC1;
 }
 
 .nav-color {
@@ -199,7 +223,7 @@ background: var(--csk-776-a-3-c-400, #BBAC77);
 
     /* Hover effect (optional) */
 .btn-custom:hover {
-    background-color: #45a049;
+    background-color: #F0EAC1;
 }
 
 .btn-custom-login {
@@ -217,7 +241,7 @@ background: var(--csk-776-a-3-c-400, #BBAC77);
 
     /* Hover effect (optional) */
 .btn-custom-login:hover {
-    background-color: #45a049;
+    background-color: #F0EAC1;
 }
 
 .btn-custom-start {
@@ -235,9 +259,36 @@ background: var(--csk-776-a-3-c-400, #BBAC77);
 
     /* Hover effect (optional) */
 .btn-custom-start:hover {
-    background-color: #45a049;
+    background-color: #C0AB61;
 }
 
 #footer {
     background: #BBAC77;
+}
+
+.welcome-card {
+    border-radius: 9.6px;
+    border: 2px solid var(--csk-776-a-3-c-200, #DDD6BB);
+    margin-bottom: 20px;
+    background: var(--csk-776-a-3-c-50, #F6F5EE);
+}
+
+.welcome-card-name {
+    color: var(--csk-776-a-3-c-800, #443D22);
+    font-weight: 500;
+}
+
+.prototype-card {
+    border-radius: 9.6px;
+    border: 2px solid var(--csk-776-a-3-c-200, #DDD6BB);
+    background: #FFF;
+}
+
+.label-form {
+    color: var(--csk-776-a-3-c-800, #443D22);
+    font-weight: 400;
+}
+
+.payment-icon {
+    width: 60px;
 }

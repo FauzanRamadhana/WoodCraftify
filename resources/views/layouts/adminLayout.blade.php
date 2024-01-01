@@ -47,7 +47,7 @@
     <div class="">
         <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary nav-color shadow-box">
             <div class="container">
-                <a class="navbar-brand my-1" href="beranda.php"><img src="/img/logoadmin.png" alt="logo Jabol"
+                <a class="navbar-brand my-1" href="daftarUser"><img src="/img/logoadmin.png" alt="logo Jabol"
                         width="400"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

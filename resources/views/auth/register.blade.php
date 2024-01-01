@@ -10,27 +10,27 @@
                     <h1 class="pb-4 mb-2 fw-bold" style="font-size: 28px;">SIGN UP</h1>
                     <div class="mb-3">
                         <input type="text" name="name" class="form-control rounded-form" style="height: 50px" id="name"
-                            placeholder="Nama Lengkap">
+                            placeholder="Nama Lengkap" required>
                     </div>
                     <div class="mt-3 pt-2">
                         <input type="email" name="email" class="form-control rounded-form" style="height: 50px"
-                            id="email" placeholder="Email">
+                            id="email" placeholder="Email" required>
                     </div>
                     <div class="mt-3 pt-2">
                         <input type="password" name="password" class="form-control rounded-form" style="height: 50px"
-                            id="password" placeholder="Password">
+                            id="password" placeholder="Password" required>
                     </div>
                     <div class="mt-3 pt-2">
                         <input type="password" name="password_confirmation" class="form-control rounded-form"
-                            style="height: 50px" id="password_confirmation" placeholder="Konfirmasi Password">
+                            style="height: 50px" id="password_confirmation" placeholder="Konfirmasi Password" required>
                     </div>
                     <div class="mt-3 pt-2">
                         <input type="text" name="phone" class="form-control rounded-form" style="height: 50px"
-                            id="phone" placeholder="Nomor Handphone">
+                            id="phone" placeholder="Nomor Handphone" required>
                     </div>
                     <div class="mb-4 mt-3 pt-2">
                         <input type="text" name="address" class="form-control rounded-form" style="height: 50px"
-                            id="address" placeholder="Alamat">
+                            id="address" placeholder="Alamat" required>
                     </div>
                     <button type="submit" class="btn btn-custom rounded-form mt-2 fw-bold"
                         style="width: 100%; height: 60px">SIGN UP</button>

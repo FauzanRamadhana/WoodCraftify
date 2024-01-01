@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kustomisasi;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
@@ -17,14 +18,28 @@ class CustomizationController extends Controller
     }
     public function index1()
     {
-
         $userId = auth()->id();
-        $customizations = Kustomisasi::where('id_user', $userId)->get();
+
+
+        $customizations = Kustomisasi::where('id_user', $userId)
+            ->whereBetween('status', [0, 5])
+            ->get();
 
         return view('daftarKustomisasiUser', ['customizations' => $customizations]);
     }
 
 
+    public function pembayaran($id)
+    {
+        // Fetch the transaction details including harga for the specified ID
+        $transaction = Kustomisasi::findOrFail($id);
+
+        // Fetch the harga for the specified ID
+        $harga = Kustomisasi::where('id', $id)->value('harga');
+
+        // Pass the transaction and harga values to the view
+        return view('pembayaran', compact('transaction', 'harga'));
+    }
 
     public function create(): View
     {
@@ -51,7 +66,7 @@ class CustomizationController extends Controller
             'image' => $imagePath,
             'id_user' => auth()->id(),
             'status' => 1,
-            'created_at' => now()->toDateString()
+            'harga' => 0
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Upload berhasil!');
@@ -81,37 +96,32 @@ class CustomizationController extends Controller
 
     public function updateKustomisasi(Request $request)
     {
-        if ($request->status == 1) {
-        } else {
-            DB::table('kustomisasi')
-                ->where('id', '=', $request->idKustomisasi)
-                ->update([
-                    'status' => $request->status,
-                ]);
+        $updateData = [
+            'status' => $request->status,
+        ];
 
-            if ($request->status == 2) {
-                DB::table('kustomisasi')
-                    ->where('id', '=', $request->idKustomisasi)
-                    ->update([
-                        'status' => $request->status,
-                    ]);
-            }
-            if ($request->status == 3) {
-                DB::table('kustomisasi')
-                    ->where('id', '=', $request->idKustomisasi)
-                    ->update([
-                        'status' => $request->status,
-                    ]);
-            }
+        // Check if 'harga' is present in the request
+        if ($request->has('harga')) {
+            $updateData['harga'] = $request->harga;
         }
 
+        $updateData['reasoning'] = $request->reasoning;
+
+        // Update the kustomisasi table
+        DB::table('kustomisasi')
+            ->where('id', '=', $request->idKustomisasi)
+            ->update($updateData);
+
+        // Check if all details are completed
         $allDetailsCompleted = DB::table('kustomisasi')
             ->where('id', '=', $request->idKustomisasi)
             ->where('status', '!=', 2)
             ->where('status', '!=', 3)
             ->doesntExist();
+
         return redirect('daftarKustomisasi');
     }
+
 
 
     public function detailKustomisasi($detailKustomisasiId)
@@ -130,8 +140,8 @@ class CustomizationController extends Controller
                 'k.width as width',
                 'k.height as height',
                 'k.notes as notes',
-
-
+                'k.reasoning as reasoning',
+                'k.harga as harga',
             )
             ->join('users as u', 'u.id', '=', 'k.id_user')
             ->where('k.id', '=', $detailKustomisasiId)->first();
@@ -190,10 +200,93 @@ class CustomizationController extends Controller
             'width' => $request->input('width'),
             'height' => $request->input('height'),
             'notes' => $request->input('notes'),
+            'status' => 3
         ]);
 
         // Redirect atau kembalikan respons sesuai kebutuhan Anda
         return redirect()->route('daftarKustomisasiUser')->with('success', 'Kustomisasi berhasil diperbarui');
 
     }
+
+
+    public function transactionsList()
+    {
+        // Ambil ID user yang sedang diautentikasi
+        $userId = auth()->id();
+
+        // Ambil data kustomisasi dengan status 7 untuk user yang sedang diautentikasi
+        $transactions = Kustomisasi::where('id_user', $userId)
+            ->where('status', 6)
+            ->get();
+
+        // Kirim data ke tampilan Blade
+        return view('transaksi', compact('transactions'));
+    }
+
+    public function historyList()
+    {
+        // Ambil ID user yang sedang diautentikasi
+        $userId = auth()->id();
+
+        // Ambil data kustomisasi dengan status 7 untuk user yang sedang diautentikasi
+        $historys = Kustomisasi::where('id_user', $userId)
+            ->where('status', 7)
+            ->get();
+
+        // Kirim data ke tampilan Blade
+        return view('history', compact('historys'));
+    }
+
+    public function processTransaction(Request $request, $id)
+    {
+        // Validasi input jika diperlukan
+        $request->validate([
+            'pembayaran' => 'required',
+            'buktitf' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Fetch the existing kustomisasi record
+        $kustomisasi = Kustomisasi::findOrFail($id);
+
+        // Update data based on the form inputs
+        $kustomisasi->pembayaran = $request->input('pembayaran');
+
+        // Proses gambar jika diunggah
+        if ($request->hasFile('buktitf')) {
+            $file = $request->file('buktitf');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('buktitf', $fileName, 'public');
+            $kustomisasi->buktitf = $fileName;
+        }
+
+        $kustomisasi->update([
+            'status' => 7
+        ]);
+
+        // Save the updated kustomisasi record
+        $kustomisasi->save();
+
+        // Redirect or return response as needed
+        return redirect()->route('daftarHistoryUser')->with('success', 'Pembayaran berhasil diupdate');
+    }
+
+    public function statusBill($id)
+    {
+        try {
+            // Find the record by ID
+            $kustomisasi = Kustomisasi::findOrFail($id);
+
+            // Update the status
+            $kustomisasi->update(['status' => 6]);
+
+            // Redirect to the 'daftarTransaksiUser' route
+            return redirect()->route('daftarTransaksiUser')->with('success', 'Status updated successfully');
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Record not found'], 404);
+        } catch (\Exception $e) {
+            // Handle other exceptions if needed
+            return response()->json(['error' => 'An error occurred'], 500);
+        }
+    }
+
 }

@@ -20,7 +20,7 @@
                         @csrf
                         <div class="row mb-3">
                             <div class="col">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label label-form">Name</label>
                                 <input type="text" name="name" class="form-control rounded-form" style="border-color:
                                     var(--csk-776-a-3-c-200, #DDD6BB);" id="name" placeholder="Your Customization Name"
                                     required>
@@ -28,7 +28,8 @@
                         </div>
                         <div class="row mb-3 mt-3 pt-2">
                             <div class="col">
-                                <label for="description" class="form-label">Tell Us More About Your Custom</label>
+                                <label for="description" class="form-label label-form">Tell Us More About Your
+                                    Custom</label>
                                 <textarea class="form-control rounded-form"
                                     style="height: 180px; border-color: var(--csk-776-a-3-c-200, #DDD6BB);"
                                     name="description" id="description" placeholder="More Description"
@@ -37,7 +38,7 @@
                         </div>
                         <div class="row mb-3 mt-3 pt-2">
                             <div class="col">
-                                <label for="image" class="form-label">Fill How Many Do You Want</label>
+                                <label for="image" class="form-label label-form">Upload Your Custom Image</label>
                                 <div class="card mb-3" style="width: 17rem;">
                                     <input type="file" name="image" accept="image/*" style="cursor: pointer;"
                                         onchange="previewImage(this);">
@@ -48,15 +49,13 @@
                     </form>
                     <div class="card personal-card">
                         <div class="card-body">
-                            <h5 class="card-title">Image Preview</h5>
+                            <h5 class="card-title label-form" style="font-weight: 500;">Image Preview</h5>
                         </div>
                         <img id="previewImage" src="img/addpic.png" class="img-fluid" alt="Image preview"
                             style="width:300px; height:150px">
                         <div class="card-body">
-                            <p class="card-text">This is a longer card with supporting text below as a natural
-                                lead-in
-                                to
-                                additional content. This content is a little bit longer.</p>
+                            <p class="card-text label-form">Please make sure that the picture is the exact furniture
+                                customization that you want.</p>
                         </div>
                     </div>
                 </div>

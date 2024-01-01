@@ -67,6 +67,12 @@ Route::get('/personalAdvance/{id}', [ReferensiController::class, 'personalAdvanc
 Route::post('/personal', [CustomizationController::class, 'personal'])->name('personal');
 Route::get('/daftarKustomisasi', [CustomizationController::class, 'index'])->middleware(['auth', 'admin'])->name('daftarKustomisasi');
 Route::get('/daftarKustomisasiUser', [CustomizationController::class, 'index1'])->middleware(['auth', 'user'])->name('daftarKustomisasiUser');
+Route::get('/daftarTransaksi', [CustomizationController::class, 'transactionsList'])->middleware(['auth', 'user'])->name('daftarTransaksiUser');
+Route::get('/daftarHistory', [CustomizationController::class, 'historyList'])->middleware(['auth', 'user'])->name('daftarHistoryUser');
+Route::get('/pembayaran/{id}', [CustomizationController::class, 'pembayaran'])->middleware(['auth', 'user'])->name('pembayaran');
+Route::get('/detail-transaksi/{detailKustomisasiId}', [CustomizationController::class, 'detailTransaksi'])->name('detailTransaksi');
+Route::post('/processTransaction/{id}', [CustomizationController::class, 'processTransaction'])->name('processTransaction');
+
 Route::get('/kustomisasiAdvance/{id}', [CustomizationController::class, 'kustomisasiAdvance'])->middleware(['auth', 'user'])->name('kustomisasiAdvance');
 
 Route::post('referensi', [ReferensiController::class, 'store'])->middleware(['auth', 'admin'])->name('referensi');
@@ -75,6 +81,7 @@ Route::post('referensiUser', [ReferensiController::class, 'store1'])->middleware
 Route::get('/kustomisasi/{id}', [CustomizationController::class, 'show'])->middleware(['auth', 'user'])->name('detailsList');
 Route::post('/updateKustomisasi/{id}', [CustomizationController::class, 'update'])->middleware(['auth', 'user'])->name('processUpdateKustomisasi');
 
+Route::post('/update-status/{id}', [CustomizationController::class, 'statusBill'])->name('updateBillStatus');
 
 Route::delete('/customizations/{id}', [CustomizationController::class, 'destroy'])
     ->name('customizations.destroy');

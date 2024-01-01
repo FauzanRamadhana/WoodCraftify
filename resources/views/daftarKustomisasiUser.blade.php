@@ -21,18 +21,22 @@
                     <tbody class="table-group-divider">
 
                         @foreach ($customizations as $customization)
-                        <tr>
+                        @if ($customization->status >= 0 && $customization->status <= 5) <tr>
                             <td class="text-center pt-3">{{ $customization->id }}</td>
                             <td class="text-center pt-3">{{ $customization->name }}</td>
                             <td class="text-center pt-3">
-                                @if ($customization->status == 1)
-                                Persetujuan
+                                @if ($customization->status == 0)
+                                Ditolak
+                                @elseif ($customization->status == 1)
+                                Pengajuan
                                 @elseif ($customization->status == 2)
-                                Setuju
+                                Customization Approve
                                 @elseif ($customization->status == 3)
-                                Tolak
-                                @else
-                                Status Tidak Dikenali
+                                Checking by admin
+                                @elseif ($customization->status == 4)
+                                Approve
+                                @elseif ($customization->status == 5)
+                                Bill
                                 @endif
                             </td>
                             <td class="text-center">
@@ -48,58 +52,60 @@
                                         onclick="return confirm('Kamu yakin ingin membatalkan kustomisasi?')">Cancel</button>
                                 </form>
                             </td>
-                        </tr>
-                        @endforeach
-                        <tr id="actionsContent1" class="hidden-content" style="display: none;">
-                            <td colspan="6">
-                                <div class="progress mx-4 my-2" role="progressbar" aria-label="Example 20px high"
-                                    aria-valuemin="0" aria-valuemax="100" style="height: 10px">
-                                    <div class="progress-bar" style="width: 100%; background:#443D22"></div>
-                                </div>
-                                <span style="display: inline-block; margin-left:145px;">Reference</span>
-                                <span
-                                    style="display: inline-block; margin-left: 95px; margin-right: 10px">Approved</span>
-                                <span style="display: inline-block; margin-left: 60px; margin-right: 10px;">Advanced
-                                    Custom</span>
-                                <span id="discussButton" class="toggleActions btn"
-                                    style="margin-left: 45px">Discuss</span>
-                                <span id="prototypeButton" class="toogleActions btn"
-                                    style="display: inline-block; margin-left:60px; margin-right: 10px;">Prototype</span>
-                                <span style="display: inline-block; margin-left:110px">Deal</span>
-                            </td>
-                        </tr>
-                        <tr id="discussContent" class="hidden-content" style="display: none;">
-                            <td colspan="6">
-                                <div class="card mx-4 my-4"
-                                    style="border-radius: 12px; background: var(--csk-776-a-3-c-200, #DDD6BB);">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <h1 class="my-4 ml-5">Contact Woodcraftify Here!</h1>
-                                        </div>
-                                        <div class="col-md-4 text-right">
-                                            <button class="btn btn-customization my-3 mr-4">Line</button>
-                                            <button class="btn btn-customization my-3 mr-4">Telegram</button>
-                                            <button class="btn btn-customization my-3 mr-4">Whatsapp</button>
+                            </tr>
+                            @endif
+                            @endforeach
+
+                            <tr id="actionsContent1" class="hidden-content" style="display: none;">
+                                <td colspan="6">
+                                    <div class="progress mx-4 my-2" role="progressbar" aria-label="Example 20px high"
+                                        aria-valuemin="0" aria-valuemax="100" style="height: 10px">
+                                        <div class="progress-bar" style="width: 100%; background:#443D22"></div>
+                                    </div>
+                                    <span style="display: inline-block; margin-left:145px;">Reference</span>
+                                    <span
+                                        style="display: inline-block; margin-left: 95px; margin-right: 10px">Approved</span>
+                                    <span style="display: inline-block; margin-left: 60px; margin-right: 10px;">Advanced
+                                        Custom</span>
+                                    <span id="discussButton" class="toggleActions btn"
+                                        style="margin-left: 45px">Discuss</span>
+                                    <span id="prototypeButton" class="toogleActions btn"
+                                        style="display: inline-block; margin-left:60px; margin-right: 10px;">Prototype</span>
+                                    <span style="display: inline-block; margin-left:110px">Deal</span>
+                                </td>
+                            </tr>
+                            <tr id="discussContent" class="hidden-content" style="display: none;">
+                                <td colspan="6">
+                                    <div class="card mx-4 my-4"
+                                        style="border-radius: 12px; background: var(--csk-776-a-3-c-200, #DDD6BB);">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h1 class="my-4 ml-5">Contact Woodcraftify Here!</h1>
+                                            </div>
+                                            <div class="col-md-4 text-right">
+                                                <button class="btn btn-customization my-3 mr-4">Line</button>
+                                                <button class="btn btn-customization my-3 mr-4">Telegram</button>
+                                                <button class="btn btn-customization my-3 mr-4">Whatsapp</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr id="prototypeContent" class="hidden-content" style="display: none;">
-                            <td colspan="6">
-                                <div class="card mx-4 my-4"
-                                    style="border-radius: 12px; background: var(--csk-776-a-3-c-200, #DDD6BB);">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <h1 class="my-4 ml-5">ini prototype</h1>
-                                        </div>
-                                        <div class="col-md-4 text-right">
-                                            <h1>ini prototype juga</h1>
+                                </td>
+                            </tr>
+                            <tr id="prototypeContent" class="hidden-content" style="display: none;">
+                                <td colspan="6">
+                                    <div class="card mx-4 my-4"
+                                        style="border-radius: 12px; background: var(--csk-776-a-3-c-200, #DDD6BB);">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h1 class="my-4 ml-5">ini prototype</h1>
+                                            </div>
+                                            <div class="col-md-4 text-right">
+                                                <h1>ini prototype juga</h1>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                     </tbody>
                 </table>
             </div>

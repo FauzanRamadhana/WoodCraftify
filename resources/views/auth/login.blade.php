@@ -10,18 +10,18 @@
                     <h1 class="pb-4 mb-3 fw-bold" style="font-size: 28px;">LOGIN</h1>
                     <div class="mb-3">
                         <input type="email" name="email" class="form-control rounded-form" style="height: 50px"
-                            id="email" placeholder="Email address">
+                            id="email" placeholder="Email address" required>
                     </div>
                     <div class="mb-4 mt-4 pt-2">
                         <input type="password" name="password" class="form-control rounded-form" style="height: 50px"
-                            id="password" placeholder="Password">
+                            id="password" placeholder="Password" required>
                     </div>
-                    <div class="mb-3 form-check d-flex justify-content-between align-items-center">
+                    <!-- <div class="mb-3 form-check d-flex justify-content-between align-items-center">
                         <div>
                             <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                         </div>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-custom rounded-form mt-4 fw-bold"
                         style="width: 100%; height: 60px">LOGIN</button>
                     <p class="mt-4 pt-2">Don't have an account? <a href="{{ route('register') }}"

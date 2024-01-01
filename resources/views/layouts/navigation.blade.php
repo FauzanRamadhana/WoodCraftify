@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary nav-color shadow-box">
     <div class="container">
-        <a class="navbar-brand my-1" href="beranda.php"><img src="/img/logowc.png" alt="logo Jabol" width="220"></a>
+        <a class="navbar-brand my-1" href="/dashboard"><img src="/img/logowc.png" alt="logo Jabol" width="220"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
